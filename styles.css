@@ -214,6 +214,52 @@ html[data-theme="dark"] .theme-toggle__moon {
   max-width: 430px;
   justify-self: start;
   position: relative;
+  perspective: 1200px;
+}
+
+.hero-book-cover__inner {
+  position: relative;
+  display: block;
+  transform-origin: center center;
+}
+
+.hero-book-cover__inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72px;
+  height: 72px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(244, 244, 242, 0.08) 55%,
+      rgba(0, 0, 0, 0.08) 100%
+    );
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  transform-origin: top right;
+  transform: rotateX(0deg) rotateY(0deg);
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+  box-shadow:
+    -1px 1px 0 rgba(17, 22, 27, 0.08),
+    -6px 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.hero-book-cover__inner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72px;
+  height: 72px;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  background: linear-gradient(135deg, rgba(17, 22, 27, 0.16), rgba(17, 22, 27, 0));
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .hero-book-cover img {
@@ -221,9 +267,33 @@ html[data-theme="dark"] .theme-toggle__moon {
   height: auto;
   display: block;
   border-radius: 2px;
+  position: relative;
+  z-index: 1;
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.22),
     0 0 0 1px rgba(17, 22, 27, 0.08);
+  transform: translateY(0) rotate(0deg);
+  transform-origin: center center;
+}
+
+.hero-book-cover:hover .hero-book-cover__inner {
+  transform: rotate(-0.5deg);
+}
+
+.hero-book-cover:hover img {
+  transform: translateY(-4px) rotate(-0.35deg);
+  box-shadow:
+    0 30px 72px rgba(0, 0, 0, 0.26),
+    0 0 0 1px rgba(17, 22, 27, 0.1);
+}
+
+.hero-book-cover:hover .hero-book-cover__inner::before {
+  opacity: 1;
+  transform: perspective(800px) rotateX(14deg) rotateY(30deg) translate(8px, -6px);
+}
+
+.hero-book-cover:hover .hero-book-cover__inner::after {
+  opacity: 1;
 }
 
 .hero-book-copy {
@@ -986,6 +1056,12 @@ html[data-theme="dark"] .theme-toggle__moon {
     max-width: min(360px, 82vw);
   }
 
+  .hero-book-cover__inner::before,
+  .hero-book-cover__inner::after {
+    width: 56px;
+    height: 56px;
+  }
+
   .hero-kicker {
     margin-bottom: 14px;
     font-size: 0.82rem;
@@ -1246,5 +1322,14 @@ html[data-theme="dark"] .theme-toggle__moon {
 
   .stories-sidebar {
     width: min(300px, 90vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-book-cover__inner,
+  .hero-book-cover__inner::before,
+  .hero-book-cover__inner::after,
+  .hero-book-cover img {
+    transition: none;
   }
 }
