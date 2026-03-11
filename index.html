@@ -1,99 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kris Pearcey</title>
+<title>Eerie Inkwell — Literary Horror</title>
 
 <link rel="stylesheet" href="styles.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
 
-<div class="progress" id="progress"></div>
+<header class="topbar">
 
-<header>
+<div class="site-title">
+Eerie Inkwell
+</div>
 
-<div class="logo">Kris Pearcey</div>
-
-<nav>
-<a href="#" onclick="showPage('home')">Home</a>
-<a href="#" onclick="showPage('about')">About</a>
-<a href="#" onclick="showPage('stories')">Stories</a>
-
-<button class="theme-toggle" onclick="toggleTheme()">☾</button>
-</nav>
+<button id="modeToggle">
+🌙
+</button>
 
 </header>
 
-<!-- HOME -->
 
-<section id="home">
+<section class="hero">
 
-<div class="hero">
-
-<h1>Kris Pearcey</h1>
+<h1>
+Literary Horror & Contemporary Weird Fiction
+</h1>
 
 <p>
-Short fiction drawn from the seam between the familiar and the unsettling.
+Short fiction drawn from familiar places — where comfort and dread quietly intersect.
 </p>
 
-<button onclick="showPage('stories')" class="cta">
-Explore the Collection
-</button>
-
-</div>
+<a href="#stories" class="cta">
+Explore the collection
+</a>
 
 </section>
 
-<!-- ABOUT -->
 
-<section id="about" class="hidden container">
+<div class="layout">
 
-<h2>About</h2>
-
-<p>
-Kris Pearcey writes short fiction where familiar landscapes begin to fray
-at the edges. His stories explore quiet horror, strange places, and the
-uneasy tension between ordinary life and the uncanny.
-</p>
-
-</section>
-
-<!-- STORIES -->
-
-<section id="stories" class="hidden stories-layout">
 
 <aside class="sidebar">
 
 <input
-type="text"
 id="search"
+type="text"
 placeholder="Search stories..."
 >
 
-<div id="storyList"></div>
+<ul id="storyList"></ul>
 
 </aside>
 
-<main class="reader" id="reader">
 
-<p>Select a story from the sidebar.</p>
+
+<main id="stories">
+
+<div id="storyCards" class="cards"></div>
 
 </main>
 
-</section>
+
+</div>
+
 
 <footer>
 
-© Kris Pearcey
+<p>
+© 2026 — Eerie Inkwell
+</p>
 
 </footer>
+
 
 <script src="script.js"></script>
 
