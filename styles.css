@@ -1,0 +1,216 @@
+:root {
+
+--bg:#f5f5f2;
+--surface:#ecece8;
+--text:#161616;
+--muted:#5b5b57;
+--border:#d8d8d2;
+--accent:#4b6b5a;
+
+}
+
+body.dark {
+
+--bg:#111;
+--surface:#181818;
+--text:#ecebe6;
+--muted:#b8b7b1;
+--border:#2a2a2a;
+--accent:#6f927c;
+
+}
+
+body {
+
+margin:0;
+font-family:Merriweather, serif;
+background:var(--bg);
+color:var(--text);
+transition:0.25s;
+
+}
+
+header {
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 32px;
+
+border-bottom:1px solid var(--border);
+
+}
+
+.logo {
+
+font-weight:700;
+
+}
+
+nav a {
+
+margin-left:20px;
+text-decoration:none;
+color:var(--text);
+
+}
+
+.theme-toggle {
+
+margin-left:20px;
+
+}
+
+.hero {
+
+text-align:center;
+padding:120px 20px;
+
+}
+
+.hero h1 {
+
+font-size:48px;
+margin-bottom:12px;
+
+}
+
+.hero p {
+
+color:var(--muted);
+
+}
+
+.cta {
+
+margin-top:30px;
+padding:12px 22px;
+
+background:var(--accent);
+border:none;
+color:white;
+
+}
+
+.container {
+
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+
+}
+
+.stories-layout {
+
+display:flex;
+height:calc(100vh - 80px);
+
+}
+
+.sidebar {
+
+width:280px;
+border-right:1px solid var(--border);
+
+padding:20px;
+
+overflow-y:auto;
+
+}
+
+.sidebar input {
+
+width:100%;
+margin-bottom:20px;
+padding:8px;
+
+}
+
+.reader {
+
+flex:1;
+
+padding:40px;
+
+overflow-y:auto;
+
+max-width:760px;
+
+margin:auto;
+
+font-family:"Libre Baskerville", serif;
+
+}
+
+.story-item {
+
+padding:12px 0;
+
+border-bottom:1px solid var(--border);
+
+cursor:pointer;
+
+}
+
+.story-item:hover {
+
+color:var(--accent);
+
+}
+
+.story-meta {
+
+font-size:12px;
+color:var(--muted);
+
+}
+
+.hidden {
+
+display:none;
+
+}
+
+.progress {
+
+position:fixed;
+
+top:0;
+left:0;
+
+height:3px;
+
+width:0;
+
+background:var(--accent);
+
+z-index:999;
+
+}
+
+footer {
+
+text-align:center;
+
+padding:40px;
+
+color:var(--muted);
+
+font-size:14px;
+
+}
+
+.reader h1 {
+
+margin-top:0;
+
+}
+
+.reader p {
+
+line-height:1.8;
+
+margin-bottom:1.2em;
+
+}
