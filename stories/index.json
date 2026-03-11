@@ -1,0 +1,12 @@
+{
+  "stories": [
+    {
+      "file": "stories/the-liminal-house.md",
+      "slug": "the-liminal-house"
+    },
+    {
+      "file": "stories/still-water.md",
+      "slug": "still-water"
+    }
+  ]
+}
