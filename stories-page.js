@@ -8,16 +8,35 @@ document.addEventListener('DOMContentLoaded', async () => {
   const sortEl = document.getElementById('storySort');
   const toggleEl = document.getElementById('sidebarToggle');
   const topbarEl = document.querySelector('.story-topbar');
+  const sidebarEl = document.querySelector('.stories-sidebar');
 
   let stories = [];
   let filtered = [];
 
-  const url = new URL(window.location.href);
+  const MOBILE_BREAKPOINT = 900;
+
+  let overlayEl = document.querySelector('.stories-overlay');
+  if (!overlayEl) {
+    overlayEl = document.createElement('button');
+    overlayEl.type = 'button';
+    overlayEl.className = 'stories-overlay';
+    overlayEl.setAttribute('aria-label', 'Close story navigation');
+    document.body.appendChild(overlayEl);
+  }
+
+  const isMobile = () => window.innerWidth <= MOBILE_BREAKPOINT;
   const selectedSlug = () => new URL(window.location.href).searchParams.get('story');
+
+  function updateOverlayAndScrollLock(isOpen) {
+    const showOverlay = isMobile() && isOpen;
+    overlayEl.classList.toggle('is-visible', showOverlay);
+    document.body.classList.toggle('mobile-nav-open', showOverlay);
+  }
 
   function setSidebarState(isOpen) {
     document.body.classList.toggle('sidebar-collapsed', !isOpen);
     toggleEl.setAttribute('aria-expanded', String(isOpen));
+    updateOverlayAndScrollLock(isOpen);
   }
 
   function updateStickyTitleVisibility() {
@@ -25,7 +44,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!storyTitle || !topbarEl) return;
 
     const rect = storyTitle.getBoundingClientRect();
-    const threshold = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 76) + 56;
+    const threshold =
+      (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 76) + 56;
 
     topbarEl.classList.toggle('show-title', rect.bottom <= threshold);
   }
@@ -106,9 +126,22 @@ document.addEventListener('DOMContentLoaded', async () => {
       );
     });
 
-    requestAnimationFrame(updateStickyTitleVisibility);
+    requestAnimationFrame(() => {
+      updateStickyTitleVisibility();
+      if (isMobile()) window.scrollTo({ top: 0, behavior: 'instant' });
+    });
 
-    if (window.innerWidth <= 900) setSidebarState(false);
+    if (isMobile()) setSidebarState(false);
+  }
+
+  function syncSidebarForViewport() {
+    if (isMobile()) {
+      setSidebarState(false);
+    } else {
+      document.body.classList.remove('mobile-nav-open');
+      overlayEl.classList.remove('is-visible');
+      setSidebarState(true);
+    }
   }
 
   try {
@@ -129,6 +162,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     setSidebarState(open);
   });
 
+  overlayEl.addEventListener('click', () => {
+    setSidebarState(false);
+  });
+
   window.addEventListener('popstate', () => {
     const slug = new URL(window.location.href).searchParams.get('story');
     openStory(slug || (stories[0] && stories[0].slug));
@@ -145,13 +182,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderList();
   });
 
-  setSidebarState(window.innerWidth > 900);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isMobile()) {
+      setSidebarState(false);
+    }
+  });
 
+  syncSidebarForViewport();
+
+  let resizeTimer;
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 900 && document.body.classList.contains('sidebar-collapsed')) return;
-    if (window.innerWidth > 900) setSidebarState(true);
-    updateStickyTitleVisibility();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      syncSidebarForViewport();
+      updateStickyTitleVisibility();
+    }, 80);
   });
 
   window.addEventListener('scroll', updateStickyTitleVisibility, { passive: true });
+
+  if (sidebarEl) {
+    sidebarEl.addEventListener('touchmove', (event) => {
+      event.stopPropagation();
+    }, { passive: true });
+  }
 });
