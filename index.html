@@ -3,38 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kristopher Pearcey</title>
+  <title>Home | Kris Pearcey</title>
   <meta
     name="description"
-    content="Literary horror and contemporary weird fiction by Kristopher Pearcey."
+    content="Literary horror and contemporary weird fiction by Kris Pearcey."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lora:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
     rel="stylesheet"
   />
-
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-page="home">
   <header class="site-header">
     <div class="site-shell header-inner">
-      <a class="brand" href="index.html">Kristopher Pearcey</a>
+      <a class="brand" href="index.html">Kris Pearcey</a>
 
-      <nav class="top-nav" aria-label="Primary">
-        <a href="stories.html">Stories</a>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="index.html" aria-current="page">Home</a>
         <a href="about.html">About</a>
-        <button
-          class="theme-toggle"
-          id="themeToggle"
-          type="button"
-          aria-label="Toggle theme"
-          title="Toggle theme"
-        >
-          <span class="theme-toggle__moon">◐</span>
-          <span class="theme-toggle__sun">◑</span>
+        <a href="stories.html">Stories</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+          <span class="theme-toggle__sun"><i class="fa-regular fa-sun"></i></span>
+          <span class="theme-toggle__moon"><i class="fa-regular fa-moon"></i></span>
         </button>
       </nav>
     </div>
@@ -47,7 +45,7 @@
           <a class="hero-book-cover" href="stories.html" aria-label="Explore Shadows in the Pines">
             <img
               src="images/shadows-in-the-pines-cover.jpg"
-              alt="Cover of Shadows in the Pines by Kristopher Pearcey"
+              alt="Cover of Shadows in the Pines by Kris Pearcey"
             />
           </a>
 
@@ -56,7 +54,7 @@
 
             <h1 class="hero-book-title">Shadows in the Pines</h1>
 
-            <p class="hero-book-author">Kristopher Pearcey</p>
+            <p class="hero-book-author">Kris Pearcey</p>
 
             <p class="hero-book-excerpt">
               A collection of short horror stories drawn from uneasy edges: deep woods,
@@ -90,28 +88,43 @@
         <h2 class="section-title">From the collection</h2>
 
         <div class="story-grid">
-          <a class="story-card" href="stories.html?story=the-snare">
-            <p class="story-card__date">March 2026</p>
-            <h3 class="story-card__title">The Snare</h3>
-            <p class="story-card__excerpt">
-              A quiet path through the woods turns wrong in ways too old to name.
-            </p>
+          <a class="story-card story-card--featured" href="stories.html?story=the-snare">
+            <div class="story-card__cover">
+              <img src="images/shadows-in-the-pines-cover.jpg" alt="" loading="lazy">
+            </div>
+            <div class="story-card__content">
+              <p class="story-card__date">March 2026</p>
+              <h3 class="story-card__title">The Snare</h3>
+              <p class="story-card__excerpt">
+                A quiet path through the woods turns wrong in ways too old to name.
+              </p>
+            </div>
           </a>
 
-          <a class="story-card" href="stories.html?story=mayfly-season">
-            <p class="story-card__date">February 2026</p>
-            <h3 class="story-card__title">Mayfly Season</h3>
-            <p class="story-card__excerpt">
-              Deep in the barrens, an unnatural hatch gathers over a creek that should not exist.
-            </p>
+          <a class="story-card story-card--featured" href="stories.html?story=mayfly-season">
+            <div class="story-card__cover">
+              <img src="images/shadows-in-the-pines-cover.jpg" alt="" loading="lazy">
+            </div>
+            <div class="story-card__content">
+              <p class="story-card__date">February 2026</p>
+              <h3 class="story-card__title">Mayfly Season</h3>
+              <p class="story-card__excerpt">
+                Deep in the barrens, an unnatural hatch gathers over a creek that should not exist.
+              </p>
+            </div>
           </a>
 
-          <a class="story-card" href="stories.html?story=the-hollow-room">
-            <p class="story-card__date">January 2026</p>
-            <h3 class="story-card__title">The Hollow Room</h3>
-            <p class="story-card__excerpt">
-              A familiar house reveals a space that no one remembers building.
-            </p>
+          <a class="story-card story-card--featured" href="stories.html?story=the-hollow-room">
+            <div class="story-card__cover">
+              <img src="images/shadows-in-the-pines-cover.jpg" alt="" loading="lazy">
+            </div>
+            <div class="story-card__content">
+              <p class="story-card__date">January 2026</p>
+              <h3 class="story-card__title">The Hollow Room</h3>
+              <p class="story-card__excerpt">
+                A familiar house reveals a space that no one remembers building.
+              </p>
+            </div>
           </a>
         </div>
       </div>
@@ -121,7 +134,7 @@
       <div class="site-shell narrow centered">
         <h2 class="section-title">About the author</h2>
         <p class="author-blurb">
-          Kristopher Pearcey writes short fiction shaped by atmosphere, place, and the subtle
+          Kris Pearcey writes short fiction shaped by atmosphere, place, and the subtle
           collapse of ordinary reality. His work lives in the space where literary horror and
           contemporary weird fiction meet.
         </p>
@@ -130,22 +143,6 @@
     </section>
   </main>
 
-  <script>
-    (() => {
-      const root = document.documentElement;
-      const toggle = document.getElementById('themeToggle');
-      const savedTheme = localStorage.getItem('theme');
-
-      if (savedTheme === 'dark' || savedTheme === 'light') {
-        root.setAttribute('data-theme', savedTheme);
-      }
-
-      toggle?.addEventListener('click', () => {
-        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-      });
-    })();
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
