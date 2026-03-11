@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kris Pearcey</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+
+<header>
+
+<div class="logo">Kris Pearcey</div>
+
+<nav>
+<a href="#" onclick="showPage('home')">Home</a>
+<a href="#" onclick="showPage('about')">About</a>
+<a href="#" onclick="showPage('stories')">Stories</a>
+
+<button class="theme-toggle" onclick="toggleTheme()">☾</button>
+</nav>
+
+</header>
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="hero">
+
+<h1>Kris Pearcey</h1>
+
+<p>
+Short fiction drawn from the seam between the familiar and the unsettling.
+</p>
+
+<button onclick="showPage('stories')" class="cta">
+Explore the Collection
+</button>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="hidden container">
+
+<h2>About</h2>
+
+<p>
+Kris Pearcey writes short fiction where familiar landscapes begin to fray
+at the edges. His stories explore quiet horror, strange places, and the
+uneasy tension between ordinary life and the uncanny.
+</p>
+
+</section>
+
+<!-- STORIES -->
+
+<section id="stories" class="hidden stories-layout">
+
+<aside class="sidebar">
+
+<input
+type="text"
+id="search"
+placeholder="Search stories..."
+>
+
+<div id="storyList"></div>
+
+</aside>
+
+<main class="reader" id="reader">
+
+<p>Select a story from the sidebar.</p>
+
+</main>
+
+</section>
+
+<footer>
+
+© Kris Pearcey
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
