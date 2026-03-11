@@ -1,96 +1,151 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kris Pearcey</title>
-  <meta name="description" content="Short fiction that pulls the world slightly out of focus." />
+  <title>Kristopher Pearcey</title>
+  <meta
+    name="description"
+    content="Literary horror and contemporary weird fiction by Kristopher Pearcey."
+  />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lora:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-page="home">
+<body>
   <header class="site-header">
     <div class="site-shell header-inner">
-      <a class="brand" href="index.html">Kris Pearcey</a>
+      <a class="brand" href="index.html">Kristopher Pearcey</a>
 
-      <nav class="top-nav" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
+      <nav class="top-nav" aria-label="Primary">
         <a href="stories.html">Stories</a>
-        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
-          <span class="theme-toggle__sun">☀</span>
-          <span class="theme-toggle__moon">☾</span>
+        <a href="about.html">About</a>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+        >
+          <span class="theme-toggle__moon">◐</span>
+          <span class="theme-toggle__sun">◑</span>
         </button>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero-section section-panel section-min-h">
-      <div class="site-shell hero-content">
-        <h1 class="hero-title">Kris Pearcey</h1>
-        <p class="hero-subtitle">
-          Short fiction drawn from the seam between the familiar and the unsettling.
-        </p>
+    <section class="section-panel hero-section hero-section--book">
+      <div class="site-shell">
+        <div class="hero-book-grid">
+          <a class="hero-book-cover" href="stories.html" aria-label="Explore Shadows in the Pines">
+            <img
+              src="images/shadows-in-the-pines-cover.jpg"
+              alt="Cover of Shadows in the Pines by Kristopher Pearcey"
+            />
+          </a>
 
-        <div class="hero-actions">
-          <a class="button button-primary" href="stories.html">Explore the Collection</a>
-          <a class="button button-secondary" href="about.html">About the Author</a>
+          <div class="hero-book-copy">
+            <p class="hero-kicker">Featured collection</p>
+
+            <h1 class="hero-book-title">Shadows in the Pines</h1>
+
+            <p class="hero-book-author">Kristopher Pearcey</p>
+
+            <p class="hero-book-excerpt">
+              A collection of short horror stories drawn from uneasy edges: deep woods,
+              familiar roads, quiet rooms, and the strange things waiting just beyond them.
+            </p>
+
+            <div class="hero-actions hero-actions--book">
+              <a class="button button-primary" href="stories.html">Explore the collection</a>
+              <a class="button button-secondary" href="about.html">About the author</a>
+            </div>
+
+            <p class="hero-book-note">
+              Literary horror and contemporary weird fiction.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="quote-section section-panel">
+    <section class="section-panel quote-section">
       <div class="site-shell narrow centered">
-        <blockquote class="featured-quote">
-          “The best horror fiction doesn't show you what's in the dark. It makes you aware that you've been standing in it all along.”
-        </blockquote>
-      </div>
-    </section>
-
-    <section class="recent-section section-panel">
-      <div class="site-shell">
-        <h2 class="section-title">Recent Stories</h2>
-        <div id="recentStories" class="story-grid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="author-preview section-panel">
-      <div class="site-shell narrow centered">
-        <h2 class="section-title">About the Author</h2>
-        <p class="author-blurb">
-          Kris Pearcey writes literary horror and contemporary weird fiction. His work explores the thresholds between the known and the numinous — the places where the ordinary world thins and something older shows through.
+        <p class="featured-quote">
+          Stories of isolation, dread, and quiet wrongness — where the familiar thins,
+          and something older begins to show through.
         </p>
-        <a class="button button-secondary" href="about.html">Read More</a>
+      </div>
+    </section>
+
+    <section class="section-panel recent-section">
+      <div class="site-shell">
+        <h2 class="section-title">From the collection</h2>
+
+        <div class="story-grid">
+          <a class="story-card" href="stories.html?story=the-snare">
+            <p class="story-card__date">March 2026</p>
+            <h3 class="story-card__title">The Snare</h3>
+            <p class="story-card__excerpt">
+              A quiet path through the woods turns wrong in ways too old to name.
+            </p>
+          </a>
+
+          <a class="story-card" href="stories.html?story=mayfly-season">
+            <p class="story-card__date">February 2026</p>
+            <h3 class="story-card__title">Mayfly Season</h3>
+            <p class="story-card__excerpt">
+              Deep in the barrens, an unnatural hatch gathers over a creek that should not exist.
+            </p>
+          </a>
+
+          <a class="story-card" href="stories.html?story=the-hollow-room">
+            <p class="story-card__date">January 2026</p>
+            <h3 class="story-card__title">The Hollow Room</h3>
+            <p class="story-card__excerpt">
+              A familiar house reveals a space that no one remembers building.
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-panel author-preview">
+      <div class="site-shell narrow centered">
+        <h2 class="section-title">About the author</h2>
+        <p class="author-blurb">
+          Kristopher Pearcey writes short fiction shaped by atmosphere, place, and the subtle
+          collapse of ordinary reality. His work lives in the space where literary horror and
+          contemporary weird fiction meet.
+        </p>
+        <a class="button button-secondary" href="about.html">Read more</a>
       </div>
     </section>
   </main>
 
-  <script src="app.js"></script>
-  <script src="stories-data.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      const container = document.getElementById('recentStories');
-      if (!container || !window.StorySite) return;
+    (() => {
+      const root = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const savedTheme = localStorage.getItem('theme');
 
-      try {
-        const stories = await window.StorySite.loadStories();
-        const recent = stories.slice(0, 3);
-
-        container.innerHTML = recent.map((story) => `
-          <a class="story-card" href="stories.html?story=${encodeURIComponent(story.slug)}">
-            <p class="story-card__date">${window.StorySite.formatDate(story.date)}</p>
-            <h3 class="story-card__title">${story.title}</h3>
-            <p class="story-card__excerpt">${story.excerpt || ''}</p>
-          </a>
-        `).join('');
-      } catch (error) {
-        container.innerHTML = '<p class="empty-state">Unable to load stories right now.</p>';
-        console.error(error);
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        root.setAttribute('data-theme', savedTheme);
       }
-    });
+
+      toggle?.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
   </script>
 </body>
 </html>
