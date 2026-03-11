@@ -39,7 +39,11 @@ body {
   transition: background-color var(--transition), color var(--transition), border-color var(--transition);
 }
 
-a, button, input, select, article, aside, header, section, div, figure {
+body.mobile-nav-open {
+  overflow: hidden;
+}
+
+a, button, input, select, article, aside, header, section, div, figure, img {
   transition:
     background-color var(--transition),
     color var(--transition),
@@ -93,7 +97,6 @@ button {
 }
 
 .brand,
-.hero-title,
 .page-title,
 .section-title,
 .story-title,
@@ -146,6 +149,8 @@ button {
 
 .theme-toggle span {
   position: absolute;
+  display: grid;
+  place-items: center;
   line-height: 1;
 }
 
@@ -186,29 +191,15 @@ html[data-theme="dark"] .theme-toggle__moon {
   margin-inline: auto;
 }
 
-/* Hero: book-led landing */
+/* Homepage hero */
 
 .hero-section--book {
-  position: relative;
   display: flex;
   align-items: center;
   min-height: calc(100vh - var(--header-height));
-  overflow: hidden;
-}
-
-.hero-section--book::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 72% 38%, rgba(63, 100, 81, 0.08), transparent 32%),
-    radial-gradient(circle at 24% 72%, rgba(17, 22, 27, 0.05), transparent 28%);
-  pointer-events: none;
 }
 
 .hero-book-grid {
-  position: relative;
-  z-index: 1;
   min-height: calc(100vh - var(--header-height));
   display: grid;
   grid-template-columns: minmax(280px, 430px) minmax(0, 1fr);
@@ -266,7 +257,6 @@ html[data-theme="dark"] .theme-toggle__moon {
   color: var(--text);
 }
 
-.hero-subtitle,
 .author-blurb,
 .about-prose,
 .story-card__excerpt,
@@ -335,8 +325,7 @@ html[data-theme="dark"] .theme-toggle__moon {
   color: var(--text);
 }
 
-.button-secondary:hover,
-.hero-section--book .button-secondary:hover {
+.button-secondary:hover {
   background: var(--panel);
 }
 
@@ -406,6 +395,36 @@ html[data-theme="dark"] .theme-toggle__moon {
   line-height: 1.5;
 }
 
+.story-card--featured {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  min-height: 0;
+}
+
+.story-card__cover {
+  width: 76px;
+  flex: 0 0 76px;
+}
+
+.story-card__cover img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(17, 22, 27, 0.08);
+}
+
+.story-card__content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .author-blurb {
   max-width: 700px;
   margin: 0 auto 24px;
@@ -413,7 +432,7 @@ html[data-theme="dark"] .theme-toggle__moon {
   line-height: 1.55;
 }
 
-/* Existing secondary page styles kept for consistency */
+/* About page */
 
 .about-wrap {
   padding: 72px 0 88px;
@@ -446,6 +465,8 @@ html[data-theme="dark"] .theme-toggle__moon {
   font-size: 1.08rem;
   line-height: 1.9;
 }
+
+/* Stories page */
 
 .stories-layout {
   display: grid;
@@ -1029,6 +1050,16 @@ html[data-theme="dark"] .theme-toggle__moon {
     gap: 8px;
   }
 
+  .story-card--featured {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .story-card__cover {
+    width: 62px;
+    flex-basis: 62px;
+  }
+
   .story-card__title {
     font-size: 1.45rem;
   }
@@ -1105,106 +1136,4 @@ html[data-theme="dark"] .theme-toggle__moon {
   .story-article,
   .sidebar-collapsed .story-article {
     width: calc(100vw - 24px);
-    padding-top: 22px;
-    padding-bottom: 50px;
-  }
-
-  .story-header {
-    margin-bottom: 24px;
-  }
-
-  .story-title {
-    font-size: 2.35rem;
-    line-height: 0.98;
-  }
-
-  .story-meta {
-    gap: 8px;
-    margin-top: 12px;
-    font-size: 0.92rem;
-  }
-
-  .story-quote {
-    margin: 18px 0 18px;
-    padding-left: 14px;
-    font-size: 1rem;
-  }
-
-  .story-downloads {
-    gap: 10px;
-  }
-
-  .story-downloads a {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-
-  .story-divider {
-    margin: 24px 0 22px;
-  }
-
-  .story-body {
-    line-height: 1.8;
-  }
-
-  .story-body p {
-    margin-bottom: 18px;
-  }
-
-  .story-body h1,
-  .story-body h2,
-  .story-body h3 {
-    margin: 30px 0 12px;
-  }
-
-  .story-body h1 { font-size: 1.95rem; }
-  .story-body h2 { font-size: 1.65rem; }
-  .story-body h3 { font-size: 1.4rem; }
-}
-
-@media (max-width: 460px) {
-  .site-shell {
-    width: calc(100vw - 20px);
-  }
-
-  .header-inner {
-    gap: 8px;
-  }
-
-  .brand {
-    font-size: 0.92rem;
-    max-width: 40vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .top-nav {
-    gap: 10px;
-  }
-
-  .top-nav a,
-  .theme-toggle {
-    font-size: 0.82rem;
-  }
-
-  .theme-toggle {
-    width: 20px;
-    height: 20px;
-    flex: 0 0 20px;
-  }
-
-  .hero-book-title,
-  .page-title,
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .story-article,
-  .sidebar-collapsed .story-article {
-    width: calc(100vw - 20px);
-  }
-
-  .stories-sidebar {
-    width: min(300px, 90vw);
-  }
-}
+    padding-
