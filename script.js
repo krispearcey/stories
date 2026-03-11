@@ -1,105 +1,92 @@
-let stories = []
+const stories = [
 
-async function loadStories(){
+{
+title:"Mayfly Season",
+date:"2026",
+pages:14,
+desc:"A fisherman matches a hatch that should not exist."
+},
 
-const index = await fetch("content/stories/index.json")
-.then(r => r.json())
+{
+title:"The Fog Beneath the Bridge",
+date:"2025",
+pages:11,
+desc:"Something waits beneath the tide-choked pylons."
+},
 
-stories = index
-
-renderList()
-
+{
+title:"Stone Lanterns",
+date:"2024",
+pages:9,
+desc:"A trail of lanterns appears where no path exists."
 }
 
-function renderList(){
+]
+
 
 const list = document.getElementById("storyList")
+const cards = document.getElementById("storyCards")
 
-list.innerHTML = ""
 
-const query =
-document.getElementById("search").value.toLowerCase()
+function render(data){
 
-stories
-.filter(story =>
-story.title.toLowerCase().includes(query)
-)
-.forEach(story => {
+list.innerHTML=""
+cards.innerHTML=""
 
-const div = document.createElement("div")
+data.forEach(story => {
 
-div.className = "story-item"
+const li = document.createElement("li")
+li.textContent = story.title
+list.appendChild(li)
 
-div.innerHTML = `
-<strong>${story.title}</strong>
-<div class="story-meta">
-${story.date} • ${story.pages} pages
-</div>
+
+const card = document.createElement("div")
+card.className = "card"
+
+card.innerHTML = `
+
+<h3>${story.title}</h3>
+
+<p>${story.desc}</p>
+
+<small>
+${story.pages} pages • ${story.date}
+</small>
+
+<br><br>
+
+<a href="#">Read</a>
+<a href="#">PDF</a>
+<a href="#">EPUB</a>
+
 `
 
-div.onclick = () => openStory(story.file)
-
-list.appendChild(div)
+cards.appendChild(card)
 
 })
 
 }
 
-async function openStory(file){
 
-const raw =
-await fetch("content/stories/" + file)
-.then(r => r.text())
+render(stories)
 
-const body =
-raw.split("---").slice(2).join("---")
 
-const html = marked.parse(body)
 
-document.getElementById("reader").innerHTML = html
+document.getElementById("search").addEventListener("input", e => {
 
-}
+const q = e.target.value.toLowerCase()
 
-function showPage(page){
+const filtered = stories.filter(story =>
+story.title.toLowerCase().includes(q)
+)
 
-["home","about","stories"].forEach(id => {
-
-document
-.getElementById(id)
-.classList.add("hidden")
+render(filtered)
 
 })
 
-document
-.getElementById(page)
-.classList.remove("hidden")
+
+document.getElementById("modeToggle").onclick = () => {
+
+document.body.classList.toggle("light")
 
 }
-
-function toggleTheme(){
-
-document.body.classList.toggle("dark")
-
-}
-
-document
-.getElementById("search")
-.addEventListener("input", renderList)
-
-window.addEventListener("scroll", () => {
-
-const doc = document.documentElement
-
-const scrolled =
-(doc.scrollTop) /
-(doc.scrollHeight - doc.clientHeight)
-
-* 100
-
-document
-.getElementById("progress")
-.style.width = scrolled + "%"
-
-})
-
-loadStories()
