@@ -1,23 +1,33 @@
 document.addEventListener('DOMContentLoaded', async () => {
   if (!window.StorySite) return;
 
-  const sidebarEl = document.getElementById('storiesSidebar');
   const listEl = document.getElementById('storyList');
   const articleEl = document.getElementById('storyArticle');
   const titleEl = document.getElementById('storyTopbarTitle');
   const searchEl = document.getElementById('storySearch');
   const sortEl = document.getElementById('storySort');
   const toggleEl = document.getElementById('sidebarToggle');
+  const topbarEl = document.querySelector('.story-topbar');
 
   let stories = [];
   let filtered = [];
 
   const url = new URL(window.location.href);
-  const selectedSlug = () => url.searchParams.get('story');
+  const selectedSlug = () => new URL(window.location.href).searchParams.get('story');
 
   function setSidebarState(isOpen) {
     document.body.classList.toggle('sidebar-collapsed', !isOpen);
     toggleEl.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  function updateStickyTitleVisibility() {
+    const storyTitle = articleEl.querySelector('.story-title');
+    if (!storyTitle || !topbarEl) return;
+
+    const rect = storyTitle.getBoundingClientRect();
+    const threshold = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 76) + 56;
+
+    topbarEl.classList.toggle('show-title', rect.bottom <= threshold);
   }
 
   function renderList() {
@@ -57,6 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!story) {
       articleEl.innerHTML = '<p class="empty-state">No stories available.</p>';
       titleEl.textContent = 'Stories';
+      if (topbarEl) topbarEl.classList.remove('show-title');
       return;
     }
 
@@ -83,8 +94,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
 
     if (push) {
-      url.searchParams.set('story', story.slug);
-      history.pushState({}, '', url);
+      const nextUrl = new URL(window.location.href);
+      nextUrl.searchParams.set('story', story.slug);
+      history.pushState({}, '', nextUrl);
     }
 
     document.querySelectorAll('.story-list-item').forEach((item) => {
@@ -93,6 +105,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         item.getAttribute('href') === `stories.html?story=${encodeURIComponent(story.slug)}`
       );
     });
+
+    requestAnimationFrame(updateStickyTitleVisibility);
 
     if (window.innerWidth <= 900) setSidebarState(false);
   }
@@ -136,5 +150,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   window.addEventListener('resize', () => {
     if (window.innerWidth > 900 && document.body.classList.contains('sidebar-collapsed')) return;
     if (window.innerWidth > 900) setSidebarState(true);
+    updateStickyTitleVisibility();
   });
+
+  window.addEventListener('scroll', updateStickyTitleVisibility, { passive: true });
 });
