@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   let stories = [];
   let filtered = [];
 
-  const url = new URL(window.location.href);
   const selectedSlug = () => new URL(window.location.href).searchParams.get('story');
 
   function setSidebarState(isOpen) {
     document.body.classList.toggle('sidebar-collapsed', !isOpen);
     toggleEl.setAttribute('aria-expanded', String(isOpen));
+    requestAnimationFrame(updateStickyTitleVisibility);
   }
 
   function updateStickyTitleVisibility() {
@@ -25,7 +25,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!storyTitle || !topbarEl) return;
 
     const rect = storyTitle.getBoundingClientRect();
-    const threshold = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 76) + 56;
+    const rootStyles = getComputedStyle(document.documentElement);
+    const headerHeight = parseFloat(rootStyles.getPropertyValue('--header-height')) || 76;
+    const topbarHeight = topbarEl.offsetHeight || 56;
+    const threshold = headerHeight + topbarHeight;
 
     topbarEl.classList.toggle('show-title', rect.bottom <= threshold);
   }
