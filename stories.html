@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stories | Kris Pearcey</title>
+  <meta name="description" content="Read stories by Kris Pearcey." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="stories">
+  <header class="site-header">
+    <div class="site-shell header-inner">
+      <a class="brand" href="index.html">Kris Pearcey</a>
+
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="stories.html">Stories</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+          <span class="theme-toggle__sun">☀</span>
+          <span class="theme-toggle__moon">☾</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="stories-layout">
+    <aside class="stories-sidebar" id="storiesSidebar">
+      <div class="stories-sidebar__inner">
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input id="storySearch" type="search" placeholder="Search stories..." aria-label="Search stories" />
+        </div>
+
+        <label class="select-wrap">
+          <span class="sr-only">Sort stories</span>
+          <select id="storySort" aria-label="Sort stories">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="title">Title A–Z</option>
+          </select>
+        </label>
+
+        <div id="storyList" class="story-list" aria-live="polite"></div>
+      </div>
+    </aside>
+
+    <section class="stories-main">
+      <div class="story-topbar">
+        <button
+          class="sidebar-toggle"
+          id="sidebarToggle"
+          type="button"
+          aria-expanded="true"
+          aria-controls="storiesSidebar"
+          aria-label="Toggle story sidebar"
+        >
+          ☰
+        </button>
+        <div class="story-topbar__title" id="storyTopbarTitle">Loading…</div>
+      </div>
+
+      <article class="story-article" id="storyArticle">
+        <div class="story-loading">Loading story…</div>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="stories-data.js"></script>
+  <script src="stories-page.js"></script>
+</body>
+</html>
