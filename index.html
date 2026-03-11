@@ -1,85 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Eerie Inkwell — Literary Horror</title>
-
-<link rel="stylesheet" href="styles.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kris Pearcey</title>
+  <meta name="description" content="Short fiction drawn from the seam between the familiar and the unsettling." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
+<body data-page="home">
+  <header class="site-header">
+    <div class="site-shell header-inner">
+      <a class="brand" href="index.html">Kris Pearcey</a>
 
-<body>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="stories.html">Stories</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+          <span class="theme-toggle__sun">☀</span>
+          <span class="theme-toggle__moon">☾</span>
+        </button>
+      </nav>
+    </div>
+  </header>
 
-<header class="topbar">
+  <main>
+    <section class="hero-section section-panel section-min-h">
+      <div class="site-shell hero-content">
+        <h1 class="hero-title">Kris Pearcey</h1>
+        <p class="hero-subtitle">
+          Short fiction drawn from the seam between the familiar and the unsettling.
+        </p>
 
-<div class="site-title">
-Eerie Inkwell
-</div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="stories.html">Explore the Collection</a>
+          <a class="button button-secondary" href="about.html">About the Author</a>
+        </div>
+      </div>
+    </section>
 
-<button id="modeToggle">
-🌙
-</button>
+    <section class="quote-section section-panel">
+      <div class="site-shell narrow centered">
+        <blockquote class="featured-quote">
+          “The best horror fiction doesn't show you what's in the dark. It makes you aware that you've been standing in it all along.”
+        </blockquote>
+      </div>
+    </section>
 
-</header>
+    <section class="recent-section section-panel">
+      <div class="site-shell">
+        <h2 class="section-title">Recent Stories</h2>
+        <div id="recentStories" class="story-grid" aria-live="polite"></div>
+      </div>
+    </section>
 
+    <section class="author-preview section-panel">
+      <div class="site-shell narrow centered">
+        <h2 class="section-title">About the Author</h2>
+        <p class="author-blurb">
+          Kris Pearcey writes literary horror and contemporary weird fiction. His work explores the thresholds between the known and the numinous — the places where the ordinary world thins and something older shows through.
+        </p>
+        <a class="button button-secondary" href="about.html">Read More</a>
+      </div>
+    </section>
+  </main>
 
-<section class="hero">
+  <script src="app.js"></script>
+  <script src="stories-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const container = document.getElementById('recentStories');
+      if (!container || !window.StorySite) return;
 
-<h1>
-Literary Horror & Contemporary Weird Fiction
-</h1>
+      try {
+        const stories = await window.StorySite.loadStories();
+        const recent = stories.slice(0, 3);
 
-<p>
-Short fiction drawn from familiar places — where comfort and dread quietly intersect.
-</p>
-
-<a href="#stories" class="cta">
-Explore the collection
-</a>
-
-</section>
-
-
-<div class="layout">
-
-
-<aside class="sidebar">
-
-<input
-id="search"
-type="text"
-placeholder="Search stories..."
->
-
-<ul id="storyList"></ul>
-
-</aside>
-
-
-
-<main id="stories">
-
-<div id="storyCards" class="cards"></div>
-
-</main>
-
-
-</div>
-
-
-<footer>
-
-<p>
-© 2026 — Eerie Inkwell
-</p>
-
-</footer>
-
-
-<script src="script.js"></script>
-
+        container.innerHTML = recent.map((story) => `
+          <a class="story-card" href="stories.html?story=${encodeURIComponent(story.slug)}">
+            <p class="story-card__date">${window.StorySite.formatDate(story.date)}</p>
+            <h3 class="story-card__title">${story.title}</h3>
+            <p class="story-card__excerpt">${story.excerpt || ''}</p>
+          </a>
+        `).join('');
+      } catch (error) {
+        container.innerHTML = '<p class="empty-state">Unable to load stories right now.</p>';
+        console.error(error);
+      }
+    });
+  </script>
 </body>
 </html>
