@@ -158,17 +158,21 @@ html[data-theme="dark"] .theme-toggle__moon{opacity:0;}
   0 0 0 1px rgba(17,22,27,.1);
 }
 
+/* HERO TITLE POLISH */
+
 .hero-book-title{
   font-family:"Cormorant Garamond",serif;
   font-size:clamp(3.6rem,7vw,6rem);
-  line-height:.92;
+  line-height:.88;
   margin:0;
+  margin-bottom:10px;
+  text-wrap:balance;
 }
 
 .hero-book-author{
-  margin-top:18px;
   font-family:"Cormorant Garamond",serif;
-  font-size:1.5rem;
+  font-size:1.45rem;
+  margin-top:0;
 }
 
 .hero-book-excerpt{
