@@ -163,14 +163,6 @@ html[data-theme="dark"] .theme-toggle__moon{opacity:0;}
   font-size:clamp(3.6rem,7vw,6rem);
   line-height:.92;
   margin:0;
-  transition:color var(--transition);
-}
-
-/* highlight only when hovering book OR title */
-
-.hero-book-cover:hover + .hero-book-copy .hero-book-title,
-.hero-book-title:hover{
-  color:var(--accent);
 }
 
 .hero-book-author{
