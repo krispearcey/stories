@@ -14,7 +14,7 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #111417;
+  --bg: #1C1C1C;
   --surface: #15191d;
   --surface-2: #1a2025;
   --panel: rgba(240, 242, 245, 0.035);
