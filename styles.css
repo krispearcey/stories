@@ -16,7 +16,7 @@
 html[data-theme="dark"] {
   --bg: #1A1614;
   --surface: #221E1C;
-  --surface-2: #1a2025;
+  --surface-2: #26211f;
   --panel: rgba(240, 242, 245, 0.035);
   --border: rgba(240, 242, 245, 0.095);
   --text: #eef0f2;
