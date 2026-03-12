@@ -166,7 +166,10 @@ html[data-theme="dark"] .theme-toggle__moon{opacity:0;}
   transition:color var(--transition);
 }
 
-.hero-book-grid:hover .hero-book-title{
+/* highlight only when hovering book OR title */
+
+.hero-book-cover:hover + .hero-book-copy .hero-book-title,
+.hero-book-title:hover{
   color:var(--accent);
 }
 
@@ -241,7 +244,7 @@ html[data-theme="dark"] .theme-toggle__moon{opacity:0;}
   gap:0;
 }
 
-/* EDITORIAL STORY LIST */
+/* STORY CARDS */
 
 .story-card{
   background:transparent;
@@ -250,10 +253,6 @@ html[data-theme="dark"] .theme-toggle__moon{opacity:0;}
   display:flex;
   flex-direction:column;
   gap:10px;
-}
-
-.story-card:hover{
-  background:transparent;
 }
 
 .story-card__date{
@@ -275,7 +274,6 @@ html[data-theme="dark"] .theme-toggle__moon{opacity:0;}
 .story-card__excerpt{
   color:var(--muted);
   line-height:1.5;
-  margin:0;
 }
 
 /* FEATURED STORY ROWS */
