@@ -20,7 +20,7 @@ html[data-theme="dark"] {
   --panel: rgba(240, 242, 245, 0.035);
   --border: rgba(240, 242, 245, 0.095);
   --text: #eef0f2;
-  --muted: #a4acb4;
+  --muted: #b5aba7;
   --accent: #86ae93;
   --accent-strong: #b9d4c0;
   color-scheme: dark;
