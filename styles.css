@@ -275,7 +275,7 @@ html[data-theme="dark"] .theme-toggle__moon {
 .hero-book-title {
   font-size: clamp(3.6rem, 7vw, 6rem);
   line-height: .88;
-  margin: 0 0 10px;
+  margin: 0 0 18px; /* 10px without Q */
   text-wrap: balance;
 }
 
