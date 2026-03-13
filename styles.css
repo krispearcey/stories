@@ -126,6 +126,10 @@ img {
   font-family: "Cormorant Garamond", Georgia, serif;
 }
 
+.hero-book-title {
+  font-family: "Playfair Display SC", Georgia, serif;
+}
+
 /* HEADER */
 
 .site-header {
