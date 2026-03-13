@@ -179,6 +179,7 @@ img {
   place-items: center;
   position: relative;
   padding: 0;
+  flex: 0 0 24px;
 }
 
 .theme-toggle span {
@@ -272,6 +273,16 @@ html[data-theme="dark"] .theme-toggle__moon {
     0 0 0 1px rgba(17, 22, 27, 0.10);
 }
 
+.hero-book-copy {
+  min-width: 0;
+}
+
+.hero-kicker {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
 .hero-book-title {
   font-size: clamp(3.6rem, 7vw, 6rem);
   line-height: .88;
@@ -306,6 +317,10 @@ html[data-theme="dark"] .theme-toggle__moon {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+}
+
+.hero-book-note {
+  margin-top: 22px;
 }
 
 /* HOME SECTIONS */
@@ -808,6 +823,12 @@ html[data-theme="dark"] .select-wrap select {
     max-width: 260px;
   }
 
+  .hero-book-copy {
+    width: 100%;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
   .hero-book-title {
     font-size: clamp(2.75rem, 10vw, 4.2rem);
     margin-bottom: 12px;
@@ -821,10 +842,16 @@ html[data-theme="dark"] .select-wrap select {
     margin-top: 18px;
     font-size: 1rem;
     line-height: 1.7;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-book-note {
     font-size: 0.98rem;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-actions {
@@ -841,6 +868,25 @@ html[data-theme="dark"] .select-wrap select {
   .featured-quote {
     font-size: 1.5rem;
     line-height: 1.45;
+    max-width: 22em;
+    margin-inline: auto;
+  }
+
+  .story-grid {
+    gap: 8px;
+  }
+
+  .story-card__content {
+    padding-right: 4px;
+  }
+
+  .about-wrap {
+    padding-top: 44px;
+    padding-bottom: 50px;
+  }
+
+  .about-copy {
+    width: min(720px, 100%);
   }
 
   .stories-layout {
@@ -955,12 +1001,6 @@ html[data-theme="dark"] .select-wrap select {
     padding: 30px 0 calc(110px + env(safe-area-inset-bottom));
   }
 
-  .story-body,
-  .story-meta,
-  .story-quote {
-    overflow-wrap: break-word;
-  }
-
   .mobile-story-dock {
     position: fixed;
     left: 16px;
@@ -1006,84 +1046,196 @@ html[data-theme="dark"] .select-wrap select {
     --mobile-story-dock-height: 58px;
   }
 
+  .site-header {
+    height: auto;
+    min-height: var(--header-height);
+  }
+
   .site-shell {
     width: min(100vw - 32px, 1280px);
   }
 
   .header-inner {
+    min-height: var(--header-height);
+    height: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
     gap: 10px;
-  }
-
-  .top-nav {
-    gap: 12px;
-  }
-
-  .top-nav a,
-  .theme-toggle {
-    font-size: 0.88rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .brand {
     font-size: 0.98rem;
-    line-height: 1;
+    line-height: 1.1;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: none;
+  }
+
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .top-nav a,
+  .theme-toggle {
+    font-size: 0.92rem;
+  }
+
+  .theme-toggle {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+  }
+
+  .hero-section--book .site-shell,
+  .quote-section .site-shell,
+  .recent-section .site-shell,
+  .author-preview .site-shell,
+  .about-wrap {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .hero-section--book {
+    min-height: auto;
+  }
+
+  .hero-book-grid {
+    gap: 20px;
+    padding: 26px 0 36px;
+  }
+
+  .hero-book-cover {
+    max-width: 190px;
+    margin: 0 auto;
+  }
+
+  .hero-book-title {
+    font-size: clamp(2.25rem, 10.5vw, 3.15rem);
+    line-height: 0.94;
+    margin: 0 0 10px;
+  }
+
+  .hero-book-author {
+    font-size: 1.02rem;
+  }
+
+  .hero-kicker {
+    margin: 0 0 10px;
+    font-size: 0.98rem;
+  }
+
+  .hero-book-copy {
+    width: 100%;
+    max-width: 34rem;
+    margin: 0 auto;
+  }
+
+  .hero-book-excerpt {
+    margin-top: 16px;
+    font-size: 1rem;
+    line-height: 1.72;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    margin-top: 22px;
+    gap: 10px;
+  }
+
+  .hero-actions .button {
+    min-height: 46px;
+    padding: 11px 16px;
+  }
+
+  .hero-book-note {
+    margin-top: 16px;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .quote-section,
+  .recent-section,
+  .author-preview {
+    padding: 38px 0 42px;
   }
 
   .section-title,
   .page-title {
-    font-size: 2.2rem;
+    font-size: 2.05rem;
+    margin-bottom: 22px;
   }
 
-  .hero-book-cover {
-    max-width: 210px;
+  .featured-quote {
+    font-size: 1.28rem;
+    line-height: 1.55;
+    max-width: 20em;
+    margin: 0 auto;
   }
 
-  .hero-book-title {
-    font-size: clamp(2.3rem, 11vw, 3.3rem);
-    line-height: 0.92;
-  }
-
-  .hero-book-author {
-    font-size: 1.08rem;
-  }
-
-  .hero-book-excerpt,
-  .hero-book-note {
-    font-size: 0.98rem;
-  }
-
-  .button {
-    padding: 11px 16px;
-    font-size: 0.92rem;
+  .story-grid {
+    gap: 2px;
   }
 
   .story-card {
-    padding: 24px 0;
+    padding: 18px 0;
   }
 
   .story-card--featured {
-    grid-template-columns: 78px 1fr;
+    grid-template-columns: 72px minmax(0, 1fr);
     gap: 14px;
   }
 
   .story-card__cover {
-    width: 78px;
-    margin-top: 18px;
+    width: 72px;
+    margin-top: 8px;
+  }
+
+  .story-card__title {
+    font-size: 1.55rem;
+    line-height: 1.02;
+  }
+
+  .story-card__date {
+    font-size: 0.9rem;
+  }
+
+  .story-card__excerpt {
+    font-size: 1rem;
+    line-height: 1.58;
+    max-width: 100%;
   }
 
   .about-wrap {
-    padding: 38px 0 42px;
+    padding-top: 34px;
+    padding-bottom: 42px;
+  }
+
+  .about-copy {
+    width: 100%;
+  }
+
+  .about-copy .page-title {
+    margin-bottom: 22px;
   }
 
   .author-photo-placeholder {
-    min-height: 220px;
-    margin-bottom: 26px;
+    min-height: 200px;
+    margin: 0 0 24px;
   }
 
   .prose p {
-    margin-bottom: 18px;
+    margin: 0 0 18px;
     font-size: 1rem;
-    line-height: 1.8;
+    line-height: 1.82;
   }
 
   .search-wrap,
@@ -1114,30 +1266,31 @@ html[data-theme="dark"] .select-wrap select {
   .story-article,
   .sidebar-collapsed .story-article {
     width: min(100vw - 32px, 720px);
-    padding-top: 26px;
+    padding-top: 24px;
     padding-bottom: calc(100px + env(safe-area-inset-bottom));
   }
 
   .story-header {
-    margin-bottom: 28px;
+    margin-bottom: 26px;
   }
 
   .story-title {
-    font-size: 2.65rem;
-    line-height: .98;
+    font-size: 2.45rem;
+    line-height: 0.98;
   }
 
   .story-meta {
     gap: 8px;
     margin-top: 12px;
     font-size: 0.92rem;
+    line-height: 1.45;
   }
 
   .story-quote {
     margin: 18px 0;
     padding-left: 14px;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.62;
   }
 
   .story-downloads {
@@ -1145,8 +1298,12 @@ html[data-theme="dark"] .select-wrap select {
   }
 
   .story-downloads a {
+    min-height: 42px;
     padding: 8px 12px;
     font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .story-divider {
@@ -1155,7 +1312,7 @@ html[data-theme="dark"] .select-wrap select {
 
   .story-body {
     font-size: 1rem;
-    line-height: 1.92;
+    line-height: 1.9;
   }
 
   .story-body p {
@@ -1179,44 +1336,57 @@ html[data-theme="dark"] .select-wrap select {
   }
 }
 
-@media (max-width: 460px) {
-  .site-shell {
-    width: min(100vw - 28px, 1280px);
+@media (max-width: 520px) {
+  .header-inner {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    gap: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
-  .header-inner {
-    gap: 8px;
+  .brand {
+    max-width: 100%;
+    font-size: 0.94rem;
   }
 
   .top-nav {
-    gap: 10px;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   .top-nav a,
   .theme-toggle {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
   }
 
-  .brand {
-    font-size: 0.92rem;
-    max-width: 40vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .theme-toggle {
-    width: 20px;
-    height: 20px;
+  .site-shell {
+    width: min(100vw - 28px, 1280px);
   }
 
   .hero-book-title,
   .section-title,
   .page-title {
-    font-size: 2rem;
+    font-size: 1.95rem;
   }
 
   .hero-book-cover {
-    max-width: 180px;
+    max-width: 170px;
+  }
+
+  .story-card--featured {
+    grid-template-columns: 66px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .story-card__cover {
+    width: 66px;
+  }
+
+  .story-card__title {
+    font-size: 1.42rem;
   }
 
   .story-article,
@@ -1225,7 +1395,7 @@ html[data-theme="dark"] .select-wrap select {
   }
 
   .story-title {
-    font-size: 2.35rem;
+    font-size: 2.2rem;
   }
 
   .stories-sidebar {
