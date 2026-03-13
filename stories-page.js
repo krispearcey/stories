@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchEl = document.getElementById('storySearch');
   const sortEl = document.getElementById('storySort');
   const toggleEl = document.getElementById('sidebarToggle');
+  const mobileDockEl = document.getElementById('mobileStoryDock');
   const topbarEl = document.querySelector('.story-topbar');
   const sidebarEl = document.querySelector('.stories-sidebar');
 
@@ -27,6 +28,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const isMobile = () => window.innerWidth <= MOBILE_BREAKPOINT;
   const selectedSlug = () => new URL(window.location.href).searchParams.get('story');
 
+  function updateToggleState(isOpen) {
+    if (toggleEl) toggleEl.setAttribute('aria-expanded', String(isOpen));
+    if (mobileDockEl) mobileDockEl.setAttribute('aria-expanded', String(isOpen));
+    if (sidebarEl) sidebarEl.setAttribute('aria-hidden', String(!isOpen));
+  }
+
   function updateOverlayAndScrollLock(isOpen) {
     const showOverlay = isMobile() && isOpen;
     overlayEl.classList.toggle('is-visible', showOverlay);
@@ -35,7 +42,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function setSidebarState(isOpen) {
     document.body.classList.toggle('sidebar-collapsed', !isOpen);
-    toggleEl.setAttribute('aria-expanded', String(isOpen));
+    document.body.classList.toggle('mobile-stories-open', isMobile() && isOpen);
+    updateToggleState(isOpen);
     updateOverlayAndScrollLock(isOpen);
   }
 
@@ -128,7 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     requestAnimationFrame(() => {
       updateStickyTitleVisibility();
-      if (isMobile()) window.scrollTo({ top: 0, behavior: 'instant' });
+      if (isMobile()) window.scrollTo({ top: 0, behavior: 'auto' });
     });
 
     if (isMobile()) setSidebarState(false);
@@ -138,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (isMobile()) {
       setSidebarState(false);
     } else {
-      document.body.classList.remove('mobile-nav-open');
+      document.body.classList.remove('mobile-nav-open', 'mobile-stories-open');
       overlayEl.classList.remove('is-visible');
       setSidebarState(true);
     }
@@ -157,10 +165,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   searchEl.addEventListener('input', renderList);
   sortEl.addEventListener('change', renderList);
 
-  toggleEl.addEventListener('click', () => {
-    const open = toggleEl.getAttribute('aria-expanded') !== 'true';
-    setSidebarState(open);
-  });
+  if (toggleEl) {
+    toggleEl.addEventListener('click', () => {
+      const open = toggleEl.getAttribute('aria-expanded') !== 'true';
+      setSidebarState(open);
+    });
+  }
+
+  if (mobileDockEl) {
+    mobileDockEl.addEventListener('click', () => {
+      const open = mobileDockEl.getAttribute('aria-expanded') !== 'true';
+      setSidebarState(open);
+    });
+  }
 
   overlayEl.addEventListener('click', () => {
     setSidebarState(false);
