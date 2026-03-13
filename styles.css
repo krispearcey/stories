@@ -14,15 +14,15 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #101418;
-  --surface: #161c21;
-  --surface-2: #1f262c;
+  --bg: #121212;
+  --surface: #1a1a1a;
+  --surface-2: #222222;
   --panel: rgba(240, 242, 245, 0.035);
   --border: rgba(240, 242, 245, 0.085);
-  --text: #e4e9ed;
-  --muted: #8b96a1;
-  --accent: #3d6b73;
-  --accent-strong: #5f9ea8;
+  --text: #f1f1f1;
+  --muted: #9c9c9c;
+  --accent: #7a8f6b;
+  --accent-strong: #9bbd86;
   color-scheme: dark;
 }
 
