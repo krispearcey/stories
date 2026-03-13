@@ -14,9 +14,9 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #1A1614;
-  --surface: #221E1C;
-  --surface-2: #26211f;
+  --bg: #1A1C1D;
+  --surface: #212425;
+  --surface-2: #282c2d;
   --panel: rgba(240, 242, 245, 0.035);
   --border: rgba(240, 242, 245, 0.095);
   --text: #eef0f2;
