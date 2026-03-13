@@ -14,15 +14,15 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #151312;
-  --surface: #1d1a18;
-  --surface-2: #26221f;
-  --panel: rgba(240, 242, 245, 0.04);
-  --border: rgba(240, 242, 245, 0.08);
-  --text: #e7e2dc;
-  --muted: #9a938c;
-  --accent: #4f7a63;
-  --accent-strong: #6ea487;
+  --bg: #101418;
+  --surface: #161c21;
+  --surface-2: #1f262c;
+  --panel: rgba(240, 242, 245, 0.035);
+  --border: rgba(240, 242, 245, 0.085);
+  --text: #e4e9ed;
+  --muted: #8b96a1;
+  --accent: #3d6b73;
+  --accent-strong: #5f9ea8;
   color-scheme: dark;
 }
 
