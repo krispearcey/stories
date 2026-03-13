@@ -21,7 +21,7 @@ html[data-theme="dark"] {
   --border: rgba(240, 242, 245, 0.095);
   --text: #eef0f2;
   --muted: #b5aba7;
-  --accent: #86ae93;
+  --accent: #3E5F4B; /* #86ae93; */
   --accent-strong: #b9d4c0;
   color-scheme: dark;
 }
