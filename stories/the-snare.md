@@ -1,7 +1,7 @@
 ---
 title: "The Snare"
 date: "2025-01-10
-pages: "8"
+pages: "13"
 excerpt: "In the suffocating silence of the shifting woods, the metallic scent of decay hung heavy. Ethan had broken his father’s rule, and now the forest was rising to collect the debt.."
 quote: "The space between the trunks looked less like gaps and more like absences — holes carved into a lifeless body."
 pdf: "#"
