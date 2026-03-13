@@ -128,6 +128,7 @@ img {
 
 .hero-book-title {
   font-family: "Playfair Display SC", Georgia, serif;
+  letter-spacing: 0.04em;
 }
 
 /* HEADER */
