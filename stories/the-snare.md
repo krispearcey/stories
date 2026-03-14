@@ -3,7 +3,7 @@ title: "The Snare"
 date: "2025-01-10
 pages: "12"
 excerpt: "In the suffocating silence of the shifting woods, the metallic scent of decay hung heavy. Ethan had broken his father’s rule, and now the forest was rising to collect the debt.."
-quote: "The space between the trunks looked less like gaps and more like absences — holes carved into a lifeless body."
+quote: "The space between the trees looked less like gaps and more like absences — holes carved into a lifeless body."
 pdf: "#"
 epub: "#"
 ---
@@ -23,9 +23,9 @@ Now the guilt sat in his chest like a swallowed stone.
 
 ---
 
-His father's oil lamp glowed somewhere ahead through the trees. He could see its faint amber cast shadows between the trunks; but the distance felt wrong. The cabin was maybe a ten minutes' walk from the Corrigans' porch on a bright afternoon. The trees, their shadows, he told himself, just made it seem farther. They always did at dusk.
+His father's oil lamp glowed somewhere ahead through the trees. He could see its faint amber cast shadows between their trunks; but the distance felt wrong. The cabin was maybe a ten minutes' walk from the Corrigans' porch on a bright afternoon. The trees, their shadows, he told himself, just made it seem farther. They always did at dusk.
 
-He cut left off the path to check the snare first. The guilt of letting the poor thing suffer for any longer gnawed at him. The shortcut took him down through a hollow where the ground turned to soft loam and the pines gave way to older trees, their bark dark and deeply grooved, their lower branches hung with a kind of greyish moss he associated with places that didn't get much sun. He'd been through here in daylight before. It had seemed fairly unremarkable then. Now, without the sun, the space between the trunks looked less like gaps and more like absences — holes carved into a lifeless body.
+He cut left off the path to check the snare first. The guilt of letting the poor thing suffer for any longer gnawed at him. The shortcut took him down through a hollow where the ground turned to soft loam and the pines gave way to older trees, their bark dark and deeply grooved, their lower branches hung with a kind of greyish moss he associated with places that didn't get much sun. He'd been through here in daylight before. It had seemed fairly unremarkable then. Now, without the sun, the space between the trees looked less like gaps and more like absences — holes carved into a lifeless body.
 
 He moved faster.
 
